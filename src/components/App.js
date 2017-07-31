@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../css/App.css';
+
+import FetchPlayers from '../utils/api';
+
+// var PlayerReturn = PlayerAxios.fetchWordPress();
+// console.log(PlayerReturn);
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello World!
+        <FetchPlayers />
       </div>
     );
   }
