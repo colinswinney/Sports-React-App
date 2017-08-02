@@ -1,0 +1,15 @@
+.team-nav {
+	background:#eee;
+	border-bottom:1px solid #000;
+}
+
+.team-nav ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.team-nav ul li {
+    display: inline-block;
+    margin:15px 15px 15px 0;
+}
