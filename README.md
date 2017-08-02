@@ -1,3 +1,11 @@
+## How to Install
+- Globally install `npm install -g create-react-app`
+- Clone or download the master branch in a new local directory
+- Run `npm install`
+- Run `npm start` to run local build/watch
+
+## Original `create-react-app` README.md Below
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
