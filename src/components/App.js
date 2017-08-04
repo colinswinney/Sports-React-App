@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import axios from 'axios';
-import TeamNav from './TeamNav';
-import TeamSingle from './TeamSingle';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 import {
 	BrowserRouter as Router,
-  	Route,
-  	Switch
+  	Route
 } from 'react-router-dom';
 
 class App extends Component {
@@ -15,16 +15,22 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-		  teams: []
+		  teams: [],
+		  players: []
 		};
 	}
 
 	componentDidMount() {
-		axios.get('http://local.sports.dev/wp-json/wp/v2/teams/?per_page=40')
-		  .then(res => {
-		    const teams = res.data;
-		    this.setState({ teams });
-		  });
+		axios.get(this.props.dataURL + '/wp-json/wp/v2/teams/?per_page=40')
+		.then(res => {
+			const teams = res.data;
+			this.setState({ teams });
+		});
+		axios.get(this.props.dataURL + '/wp-json/players-cpt/v1/get-all-players')
+		.then(res => {
+			const players = res.data;
+			this.setState({ players });
+		});
 	}
 
 	render(props) {
@@ -32,26 +38,11 @@ class App extends Component {
 			<Router>
 				<Route render={ () => (
 					<div className="app">
-						<Switch>
-							
-							<Route path="/" exact render={ () => (
-								<div>
-									<TeamNav teams={this.state.teams} />
-									<h2>You are Home</h2>
-								</div>
-							)} />
-							{this.state.teams.map((team, i) => (
-								<Route path={`/${team.slug}`} exact key={i} render={() => (
-									<div>
-									
-										<TeamNav teams={this.state.teams} />
-										<p>{team.name}</p>
-										<TeamSingle teamInfo={team} />
-									</div>
-								)} />
-							))}
+						<Header teams={this.state.teams} />
 
-						</Switch>
+						<Main teams={this.state.teams} players={this.state.players} {...this.props} />
+
+						<Footer />
 					</div>
 				)} />
 			</Router>
