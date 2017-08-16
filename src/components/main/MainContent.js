@@ -1,18 +1,20 @@
 import React from 'react';
-import '../css/Main.css';
+import '../../css/main/MainContent.css';
 import TeamSingle from './TeamSingle';
 import PlayerSingle from './PlayerSingle';
 import { Route, Switch } from 'react-router-dom';
 
-class Main extends React.Component {
+class MainContent extends React.Component {
 	render(props) {
 		return (
-			<main>
+			<div className="cr-main">
 				<Route render={ ({location}) => (
 					<Switch key={location.key} location={location}>
 
 						<Route exact path='/' {...props} render={props=> (
-							<h2>You are Home</h2>
+							<div>
+								<h2>You are Home</h2>
+						    </div>
 						)}/>
 
 						{this.props.teams.map((team, i) => (
@@ -21,16 +23,16 @@ class Main extends React.Component {
 							)}/>
 						))}
 						{this.props.players.map((player, i) => (
-							<Route exact path={`/${player.slug}-id-${player.id}`} key={i} render={props=> (
-								<PlayerSingle {...props} {...this.props} playerID={player.id} />
+							<Route exact path={`/${player.post_name}-id-${player.ID}`} key={i} render={props=> (
+								<div><PlayerSingle {...props} {...this.props} player={player} /></div>
 							)}/>
 						))}
 
 					</Switch>
 				)} />
-			</main>
+			</div>
 		)
 	}
 }
 
-export default Main;
+export default MainContent;

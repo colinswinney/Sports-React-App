@@ -49,9 +49,25 @@ table {
 
 /**********************************************************************/
 
-body {
-	padding:15px;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+html, body {
+  height: 100vh;
 }
+
+body {
+  font: 600 16px/1 'Open Sans', sans-serif;
+  background: royalblue;
+  overflow-x: hidden;
+  text-align: right;
+}
+
 .active {
 	color:red;
+}
+
+.twitter-timeline {
+	max-width:600px !important;
+	float:right;
 }

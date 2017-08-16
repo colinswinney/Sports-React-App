@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PlayerTwitterFeed from './PlayerTwitterFeed';
+import { NavLink } from 'react-router-dom';
 
 class PlayerSingle extends React.Component {
 
@@ -13,7 +14,7 @@ class PlayerSingle extends React.Component {
 	}
 
 	componentDidMount(props) {
-		axios.get(this.props.dataURL + '/wp-json/wp/v2/players/' + this.props.playerID)
+		axios.get(this.props.dataURL + '/wp-json/wp/v2/players/' + this.props.player.ID)
 		.then(res => {
 			const player = res.data;
 			this.setState({ player: player });
@@ -28,17 +29,19 @@ class PlayerSingle extends React.Component {
 		const playerData = this.state.player;
 
 	    if (Object.keys(playerData).length > 0 && playerData.constructor === Object){ //if the object is not empty
-	      return (
-	        <div>
-	          {playerData.title.rendered}
-	          <PlayerTwitterFeed playerInfo={playerData} />
-	        </div>
-	      );
-	    } else {
-	      return (
-	        <div></div>
-	      )
-	    }
+			return (
+				<div>
+					<NavLink to={`/${playerData.team_info[0].slug}`}>Back to {playerData.team_info[0].name}</NavLink>
+					<h2>{playerData.title.rendered}</h2>
+					<PlayerTwitterFeed playerInfo={playerData} />
+				</div>
+			);
+		}
+		else {
+			return (
+				<div></div>
+			)
+		}
 	}
 }
 

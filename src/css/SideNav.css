@@ -1,0 +1,57 @@
+aside.cr-sidenav {
+  margin-top: 70px;
+  position: absolute;
+  width: 270px;
+  text-align: right;
+  right:0;
+}
+
+aside.cr-sidenav .title {
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  color: #eee;
+  border-bottom: 1px solid #000046;
+  background: dodgerblue;
+}
+
+aside.cr-sidenav .nav ul li a {
+  position: relative;
+  display: block;
+  padding: 20px 50px 20px 0;
+  font-size: 14px;
+  color: #eee;
+  border-bottom: 1px solid #000046;
+  text-transform: uppercase;
+}
+
+aside.cr-sidenav .nav ul li a:before {
+  font: 14px fontawesome;
+  position: absolute;
+  top: 19px;
+  right: 20px;
+  content:'\f140';
+  color:#000046;
+}
+/*
+.nav ul li:nth-child(1) a:before { content: '\f00a'; }
+.nav ul li:nth-child(2) a:before { content: '\f012'; }
+.nav ul li:nth-child(3) a:before { content: '\f0e8'; }
+.nav ul li:nth-child(4) a:before { content: '\f0c3'; }
+.nav ul li:nth-child(5) a:before { content: '\f022'; }
+.nav ul li:nth-child(6) a:before { content: '\f115'; }
+.nav ul li:nth-child(7) a:before { content: '\f085'; }
+.nav ul li:nth-child(8) a:before { content: '\f023'; left: 23px; }
+*/
+
+aside.cr-sidenav .nav ul li a:hover {
+  background:red;
+  box-shadow: inset -15px 0 0 orange, inset -16px 0 0 #222;
+}
+
+aside.cr-sidenav .nav ul li a.active {
+  box-shadow: inset -15px 0 0 orange, inset -16px 0 0 #222;
+  background: deepskyblue;
+}

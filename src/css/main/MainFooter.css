@@ -2,4 +2,5 @@ footer {
 	clear:both;
 	background:#eee;
 	height:100px;
+	display: block;
 }
